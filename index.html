@@ -35,6 +35,38 @@
     </ul>
   </div>
 
+  <div style="padding:40px; max-width:900px; margin:auto;">
+
+  <h2 onclick="toggleScreenshots()" 
+      style="cursor:pointer; color:#38bdf8;">
+      📸 Screenshots (click to view)
+  </h2>
+
+  <div id="screenshots" style="display:none; margin-top:20px;">
+
+    <div style="display:flex; flex-wrap:wrap; gap:15px; justify-content:center;">
+      <img src="home.png" style="width:200px; border-radius:10px;">
+      <img src="lockscreen.png" style="width:200px; border-radius:10px;">
+      <img src="settings.png" style="width:200px; border-radius:10px;">
+      <img src="about.png" style="width:200px; border-radius:10px;">
+      <img src="statusbar.jpg" style="width:200px; border-radius:10px;">
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+function toggleScreenshots() {
+  var x = document.getElementById("screenshots");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
   <!-- DOWNLOAD -->
   <div style="padding:40px; max-width:900px; margin:auto;">
     <h2>📦 Downloads</h2>
