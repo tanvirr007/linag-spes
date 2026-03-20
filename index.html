@@ -455,6 +455,7 @@
       z-index: 1;
       animation: float 5s ease-in-out infinite;
       filter: drop-shadow(0 20px 40px rgba(0, 0, 0, .55));
+      cursor: zoom-in;
     }
 
     @keyframes float {
@@ -1342,7 +1343,7 @@
         </div>
       </div>
       <div class="device-wrap">
-        <img class="device-img" src="src/model.png" alt="Redmi Note 11 / NFC" />
+        <img class="device-img" src="src/model.png" alt="REDMI NOTE 11 / NFC" />
       </div>
     </div>
   </section>
@@ -1896,6 +1897,20 @@
           img.src = av.src;
           img.alt = av.alt;
           cap.textContent = 'OUR BELOVED STARSTREAM';
+          lb.classList.add('open');
+          document.body.style.overflow = 'hidden';
+          prv.style.display = 'none';
+          nxt.style.display = 'none';
+          cls.focus();
+        }
+      });
+      // Handler for device img
+      document.querySelector('.device-img')?.addEventListener('click', e => {
+        const di = e.target;
+        if (di) {
+          img.src = di.src;
+          img.alt = di.alt;
+          cap.textContent = di.alt;
           lb.classList.add('open');
           document.body.style.overflow = 'hidden';
           prv.style.display = 'none';
