@@ -1025,7 +1025,8 @@
       gap: 1rem;
     }
 
-    .lb-wrap.open {
+    .lb-wrap.open,
+    .lb-wrap.closing {
       display: flex
     }
 
@@ -1057,6 +1058,36 @@
         opacity: 1;
         transform: scale(1)
       }
+    }
+
+    @keyframes zoomOut {
+      from {
+        opacity: 1;
+        transform: scale(1)
+      }
+
+      to {
+        opacity: 0;
+        transform: scale(.88)
+      }
+    }
+
+    @keyframes fadeOut {
+      from {
+        opacity: 1
+      }
+
+      to {
+        opacity: 0
+      }
+    }
+
+    .lb-wrap.closing {
+      animation: fadeOut .2s ease-in forwards;
+    }
+
+    .lb-wrap.closing .lb-img {
+      animation: zoomOut .2s ease-in forwards;
     }
 
     .lb-cap {
@@ -1883,8 +1914,13 @@
         cls.focus();
       }
       function close() {
-        lb.classList.remove('open');
-        document.body.style.overflow = '';
+        if (!lb.classList.contains('open') || lb.classList.contains('closing')) return;
+        lb.classList.add('closing');
+        lb.addEventListener('animationend', (e) => {
+          if (e.target !== lb) return;
+          lb.classList.remove('open', 'closing');
+          document.body.style.overflow = '';
+        }, { once: true });
       }
       $('ss-grid')?.addEventListener('click', e => {
         const b = e.target.closest('.ss-btn');
